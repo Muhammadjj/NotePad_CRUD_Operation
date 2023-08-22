@@ -1,8 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-
-import '../../Components/Colors/colors_file.dart';
+import '../../Components/Constant/colors_file.dart';
 import '../First_Screen/View_Data_Screen/main_view_screen.dart';
 
 

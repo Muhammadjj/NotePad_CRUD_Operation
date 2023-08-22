@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:note_pad2/Models/note_pad_model_class.dart';
 import 'package:note_pad2/Screens/Drawer_Screens/Recycle_Bin_Screen/recycle_bin_data_widget.dart';
 import 'package:note_pad2/Screens/Routes/routes_method.dart';
-
-import '../../../Components/Colors/colors_file.dart';
+import '../../../Components/Constant/colors_file.dart';
 import '../../../Components/Constant/textstyle.dart';
 
 class RecycleBinScreen extends StatefulWidget {

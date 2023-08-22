@@ -4,8 +4,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:note_pad2/Screens/First_Screen/View_Data_Screen/view_data_widget.dart';
-
-import '../../../Components/Colors/colors_file.dart';
+import '../../../Components/Constant/colors_file.dart';
 import '../../../Components/Constant/textstyle.dart';
 import '../../../Components/drawer.dart';
 import '../../../Models/note_pad_model_class.dart';
@@ -25,7 +24,6 @@ class _FetchingScreenState extends State<FetchingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       backgroundColor: allScreenColors,
       drawer: const BeautifulDrawer(),
       appBar: AppBar(

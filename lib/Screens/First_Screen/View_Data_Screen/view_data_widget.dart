@@ -122,7 +122,22 @@ class _BeautifulGridViewState extends State<BeautifulGridView> {
 
   @override
   Widget build(BuildContext context) {
-    return RefreshIndicator(
+    return emptyList.isEmpty? RefreshIndicator(
+      onRefresh: _refresh,
+      color: Colors.green,
+      displacement: 50,
+      strokeWidth: 3,
+      backgroundColor: Colors.pink,
+      child: Center(
+        child: ListView(
+          physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+          children: const[
+            SizedBox(height: 60,),
+            Center(child: Icon(Icons.keyboard_double_arrow_down_rounded,
+            color: Colors.red,size: 40,))
+            ]),
+      ))
+    :RefreshIndicator(
       onRefresh: _refresh,
       color: Colors.green,
       displacement: 50,
@@ -137,7 +152,7 @@ class _BeautifulGridViewState extends State<BeautifulGridView> {
           itemCount: emptyList.length,
           gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
           itemBuilder: (BuildContext context,int index) {
-
+    
             return InkWell(
               onTap: () {
                 Navigator.pushNamed(context, RoutesName.thirdScreen,
@@ -147,7 +162,7 @@ class _BeautifulGridViewState extends State<BeautifulGridView> {
                   description: emptyList[index].description
                 ));
               },
-
+    
               
               child: Padding(
                 padding: const EdgeInsets.all(8.0),

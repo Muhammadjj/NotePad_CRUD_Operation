@@ -1,9 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:note_pad2/Screens/First_Screen/Update_data_Screen/update_data_widget.dart';
-// import 'package:note_pad1/Screens/First_Screen/Update_data_Screen/update_data_widget.dart';
-
-import '../../../../Components/Colors/colors_file.dart';
+import '../../../Components/Constant/colors_file.dart';
 import '../../../Components/Constant/textstyle.dart';
 import '../../../Components/Driectories/Note_Pad_DBHelper_Classes/main_note_pad_db_provider_database.dart';
 import '../../../Models/note_pad_model_class.dart';
