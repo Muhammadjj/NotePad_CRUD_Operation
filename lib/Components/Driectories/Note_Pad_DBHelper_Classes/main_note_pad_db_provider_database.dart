@@ -1,6 +1,5 @@
-import 'package:note_pad2/Components/Driectories/History_Note_Pad_DBHelper_Class/main_history_db_provider_database.dart';
+import 'package:note_pad2/Components/Driectories/Recycle_Bin_Note_Pad_DBHelper_Class/main_recycle_bin_db_provider_database.dart';
 import 'package:sqflite/sqflite.dart';
-
 import '../../../Models/note_pad_model_class.dart';
 import 'main_note_pad_dbhelper.dart';
 
@@ -23,7 +22,9 @@ class NotePadProvider {
   Future<List<NotePadModelClass>> getNotePad() async {
     Database db = await NotePadDBHelper.dataBaseFunction;
     List<Map<String, dynamic>> data = await db.query(notePadTableName);
-    return data.map((fetch) => NotePadModelClass.fromMap(fetch)).toList();
+    return data
+        .map((mainScreen) => NotePadModelClass.fromMap(mainScreen))
+        .toList();
   }
 
   // Todo: update function means ka apny insert data ko update krny ka function .
@@ -38,7 +39,7 @@ class NotePadProvider {
   Future<bool> deleteNotePad({required int? id}) async {
     Database db = await NotePadDBHelper.dataBaseFunction;
     final note = await db.query(notePadTableName, where: "$columID = ? ", whereArgs: [id]);
-    await db.insert(HistoryProvider.historyTableName, note.last);
+    await db.insert(RecycleBinProvider.recycleBinTableName, note.first);
     int rowID = await db.delete(notePadTableName, where: '$columID = ? ', whereArgs: [id]);
     return rowID >= 0;
   }

@@ -4,6 +4,7 @@ import 'package:note_pad2/Screens/First_Screen/Update_data_Screen/update_data_wi
 // import 'package:note_pad1/Screens/First_Screen/Update_data_Screen/update_data_widget.dart';
 
 import '../../../../Components/Colors/colors_file.dart';
+import '../../../Components/Constant/textstyle.dart';
 import '../../../Components/Driectories/Note_Pad_DBHelper_Classes/main_note_pad_db_provider_database.dart';
 import '../../../Models/note_pad_model_class.dart';
 
@@ -30,8 +31,8 @@ class _UpdateDataState extends State<UpdateData> {
             description: descriptionController.text);
      await helper.updateNotePad( modelClass:note );
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text("Successfully Update Data .",
-      style: _textStyle(18, FontWeight.w500, FontStyle.italic, Colors.white),),
+      content: AutoSizeText("Successfully Update Data .",
+      style: textStyle(18, FontWeight.w500, FontStyle.italic, Colors.white),),
       behavior: SnackBarBehavior.floating,
       backgroundColor: floatingPointButtonColors,
       dismissDirection: DismissDirection.horizontal,
@@ -65,7 +66,7 @@ class _UpdateDataState extends State<UpdateData> {
         backgroundColor: allScreenColors,
         centerTitle: true,
         title: AutoSizeText("UPDATE",
-        style: _textStyle(30, FontWeight.bold, FontStyle.italic, Colors.white),),
+        style: textStyle(30, FontWeight.bold, FontStyle.italic, Colors.white),),
         leading: InkWell(
           onTap: () => Navigator.pop(context),
           child: const Icon(Icons.arrow_back,color: Colors.white,)),
@@ -103,13 +104,4 @@ class _UpdateDataState extends State<UpdateData> {
     );
   }
 
-  // ** All Text Using TextStyle.
-  TextStyle _textStyle(
-      double fontSize, FontWeight weight, FontStyle fontStyle, Color color) {
-    return TextStyle(
-        fontSize: fontSize,
-        fontWeight: weight,
-        fontStyle: fontStyle,
-        color: color);
-  }
 }

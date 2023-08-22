@@ -2,8 +2,10 @@
 
 import 'dart:math';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import '../../../Components/Constant/textstyle.dart';
 import '../../../Components/Driectories/Note_Pad_DBHelper_Classes/main_note_pad_db_provider_database.dart';
 import '../../../Models/note_pad_model_class.dart';
 import '../../Routes/routes_method.dart';
@@ -158,11 +160,11 @@ class _BeautifulGridViewState extends State<BeautifulGridView> {
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       children: [
-                      Text(emptyList[index].title.toString(),
-                      style: _textStyle(22, FontWeight.bold, FontStyle.italic,Colors.white),),
+                      AutoSizeText(emptyList[index].title.toString(),
+                      style: textStyle(22, FontWeight.bold, FontStyle.italic,Colors.white),),
                       const SizedBox(height: 10,),
-                      Text(emptyList[index].description.toString(),
-                      style: _textStyle(15, FontWeight.w500, FontStyle.normal, const Color.fromARGB(255, 236, 236, 236)),),
+                      AutoSizeText(emptyList[index].description.toString(),
+                      style: textStyle(15, FontWeight.w500, FontStyle.normal, const Color.fromARGB(255, 236, 236, 236)),),
                       const SizedBox(height: 20,),
                       Align(
                         alignment: Alignment.bottomRight,
@@ -188,16 +190,5 @@ class _BeautifulGridViewState extends State<BeautifulGridView> {
         ),
       ),
     );
-  }
-
-
-// ** All Text Using TextStyle.
-  TextStyle _textStyle(
-      double fontSize, FontWeight weight, FontStyle fontStyle, Color color) {
-    return TextStyle(
-        fontSize: fontSize,
-        fontWeight: weight,
-        fontStyle: fontStyle,
-        color: color);
   }
 }

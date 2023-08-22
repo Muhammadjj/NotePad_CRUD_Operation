@@ -1,4 +1,4 @@
-import 'package:note_pad2/Components/Driectories/History_Note_Pad_DBHelper_Class/main_history_db_provider_database.dart';
+import 'package:note_pad2/Components/Driectories/Recycle_Bin_Note_Pad_DBHelper_Class/main_recycle_bin_db_provider_database.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -30,7 +30,7 @@ class NotePadDBHelper {
           version: dataBaseVersion,
           onCreate: (Database db, int version) {
             db.execute(NotePadProvider.createTable);
-            db.execute(HistoryProvider.historyCreateTable);
+            db.execute(RecycleBinProvider.recycleBinCreateTable);
           },
         );
   }

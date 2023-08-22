@@ -23,6 +23,8 @@ class NotePadApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'NotePad App',
       theme: ThemeData(
+        iconTheme:const IconThemeData(color: Colors.white),
+        primaryIconTheme:const IconThemeData(color: Colors.white),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),

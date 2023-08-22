@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:note_pad2/Screens/First_Screen/View_Data_Screen/view_data_widget.dart';
 
 import '../../../Components/Colors/colors_file.dart';
+import '../../../Components/Constant/textstyle.dart';
 import '../../../Components/drawer.dart';
 import '../../../Models/note_pad_model_class.dart';
 import '../../Routes/routes_method.dart';
@@ -24,14 +25,15 @@ class _FetchingScreenState extends State<FetchingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       backgroundColor: allScreenColors,
-      drawer: BeautifulDrawer(),
+      drawer: const BeautifulDrawer(),
       appBar: AppBar(
+        iconTheme:const IconThemeData(color: Colors.white),
         backgroundColor: allScreenColors,
         centerTitle: true,
         title: AutoSizeText("NOTES",
-        style: _textStyle(30, FontWeight.bold, FontStyle.italic, Colors.white),),
-      ),
+        style: textStyle(30, FontWeight.bold, FontStyle.italic, Colors.white),),),
       body: emptyList.isEmpty?
       const BeautifulGridView()
       :const BeautifulGridView(),
@@ -48,15 +50,7 @@ class _FetchingScreenState extends State<FetchingScreen> {
   }
 
 
-  // ** All Text Using TextStyle.
-  TextStyle _textStyle(
-      double fontSize, FontWeight weight, FontStyle fontStyle, Color color) {
-    return TextStyle(
-        fontSize: fontSize,
-        fontWeight: weight,
-        fontStyle: fontStyle,
-        color: color);
-  }
+
 }
 
 

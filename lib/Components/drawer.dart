@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:note_pad2/Components/colors/colors_file.dart';
+import 'package:note_pad2/Components/Constant/colors_file.dart';
 import 'package:note_pad2/Screens/Routes/routes_method.dart';
+
+import 'Constant/textstyle.dart';
 
 class BeautifulDrawer extends StatefulWidget {
   const BeautifulDrawer({super.key});
@@ -15,10 +17,12 @@ class _BeautifulDrawerState extends State<BeautifulDrawer> {
     var heightMediaQuery = MediaQuery.sizeOf(context).height;
     var widthMediaQuery = MediaQuery.sizeOf(context).width;
     return Drawer(
-      elevation: 16,
-      shadowColor: floatingPointButtonColors,
+      elevation: 5,
+      shadowColor: const Color.fromARGB(181, 223, 223, 223),
       backgroundColor: allScreenColors,
-      shape: ContinuousRectangleBorder(borderRadius: BorderRadius.circular(50),),
+      shape:const ContinuousRectangleBorder(borderRadius: BorderRadius.only(
+      bottomRight: Radius.circular(50),
+      topRight: Radius.circular(50))),
       child: ListView(
         physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         children: [
@@ -29,7 +33,7 @@ class _BeautifulDrawerState extends State<BeautifulDrawer> {
           Column(
             children: [
               Expanded(child: Center(child: Text("NotePad",
-              style: _textStyle(35, FontWeight.bold, FontStyle.italic, Colors.white,),))),
+              style: textStyle(35, FontWeight.bold, FontStyle.italic, Colors.white,),))),
               Expanded(
                 flex: 2,
                 child: SizedBox(
@@ -41,9 +45,9 @@ class _BeautifulDrawerState extends State<BeautifulDrawer> {
           )),
           //  List of Drawer Working .
          listTile(
-          onTap: () => Navigator.pushNamed(context, RoutesName.historyScreen),
-          text: "History",
-          icon: Icons.history_toggle_off_sharp,
+          onTap: () => Navigator.pushNamed(context, RoutesName.recycleBinScreen),
+          text: "RecycleBin",
+          icon: Icons.recycling_rounded,
          ),
          listTile(
           onTap: () => Navigator.pushNamed(context, RoutesName.aboutScreen),
@@ -60,30 +64,18 @@ class _BeautifulDrawerState extends State<BeautifulDrawer> {
 
 
   Widget listTile({String? text,IconData? icon,GestureTapCallback? onTap}){
-    return InkWell(
-      onTap: onTap,
-      child: Card(
-        color: allScreenColors,
-        elevation: 10,
-        shadowColor: Colors.green.withOpacity(0.2),
-        margin:const EdgeInsets.all(10),
-        shape: ContinuousRectangleBorder(borderRadius: BorderRadius.circular(5)),
+    return Card(
+      color: allScreenColors,
+      elevation: 5,
+      shadowColor: const Color.fromARGB(255, 206, 206, 206).withOpacity(0.2),
+      margin:const EdgeInsets.all(10),
+      shape: ContinuousRectangleBorder(borderRadius: BorderRadius.circular(5)),
+      child: InkWell(
+        onTap: onTap,
         child: ListTile(
-                title: Text(text.toString(),style: _textStyle(20, FontWeight.w500, FontStyle.normal, Colors.white),),
+                title: Text(text.toString(),style: textStyle(20, FontWeight.w500, FontStyle.normal, Colors.white),),
                 leading: Icon(icon,color: Colors.white,),),
       ),
     );
-  }
-
-
-
-   // ** All Text Using TextStyle.
-  TextStyle _textStyle(
-      double fontSize, FontWeight weight, FontStyle fontStyle, Color color) {
-    return TextStyle(
-        fontSize: fontSize,
-        fontWeight: weight,
-        fontStyle: fontStyle,
-        color: color);
   }
 }

@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import '../../../Components/Colors/colors_file.dart';
+import '../../../Components/Constant/textstyle.dart';
 import '../../../Components/Driectories/Note_Pad_DBHelper_Classes/main_note_pad_db_provider_database.dart';
 import '../../../Models/note_pad_model_class.dart';
 import 'insert_screen_widget.dart';
@@ -27,7 +28,7 @@ class _InsertScreenState extends State<InsertScreen> {
             description: descriptionController.text));
     ScaffoldMessenger.of(context).showSnackBar( SnackBar(
       content: Text("Successfully Insert Data .",
-      style: _textStyle(18, FontWeight.w500, FontStyle.italic, Colors.white),),
+      style: textStyle(18, FontWeight.w500, FontStyle.italic, Colors.white),),
       behavior: SnackBarBehavior.floating,
       backgroundColor: floatingPointButtonColors,
       dismissDirection: DismissDirection.horizontal,
@@ -61,7 +62,7 @@ class _InsertScreenState extends State<InsertScreen> {
         backgroundColor: allScreenColors,
         centerTitle: true,
         title: AutoSizeText("INSERT",
-        style: _textStyle(30, FontWeight.bold, FontStyle.italic, Colors.white),),
+        style: textStyle(30, FontWeight.bold, FontStyle.italic, Colors.white),),
         leading: InkWell(
           onTap: () => Navigator.pop(context),
           child: const Icon(Icons.arrow_back,color: Colors.white,)),
@@ -98,16 +99,5 @@ class _InsertScreenState extends State<InsertScreen> {
         shape:const CircleBorder(),
         child:const Icon(Icons.save,color: Colors.white),),
     );
-  }
-
-
-  // ** All Text Using TextStyle.
-  TextStyle _textStyle(
-      double fontSize, FontWeight weight, FontStyle fontStyle, Color color) {
-    return TextStyle(
-        fontSize: fontSize,
-        fontWeight: weight,
-        fontStyle: fontStyle,
-        color: color);
   }
 }
