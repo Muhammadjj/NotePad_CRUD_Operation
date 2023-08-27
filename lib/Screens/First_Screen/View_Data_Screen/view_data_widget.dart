@@ -8,7 +8,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../../../Components/Constant/textstyle.dart';
 import '../../../Components/Driectories/Note_Pad_DBHelper_Classes/main_note_pad_db_provider_database.dart';
 import '../../../Models/note_pad_model_class.dart';
-import '../../Routes/routes_method.dart';
+import '../../../Routes/routes_method.dart';
 
 // class ListViewBuilder extends StatefulWidget {
 //   const ListViewBuilder({super.key});
@@ -94,21 +94,29 @@ class BeautifulGridView extends StatefulWidget {
 
 class _BeautifulGridViewState extends State<BeautifulGridView> {
   NotePadProvider helper = NotePadProvider();
+
+///* Using Empty list as laya ki q ka jo data hmra insert ho raha ha asy hm ny 
+///* khi View to krwana ha aur jo data view ho raha ha wo (insert) ma sa ak list 
+///* ki sorat ma a raha ha aur as list ko hm ny Fetch krwany ka laya ak list bnye
+///* js ka name hm na (emptyList) rakha
   List<NotePadModelClass> emptyList = [];
   // ** Random class using this colors irrSequence 
   Random random = Random();
 
  
-
-  viewData() async {
+ ///* jo hm na (NotePadProvider) app ma (Fetch) krny ki query lakhe ha ays Query 
+ ///* ko as method ma use kr raha ha (await) lga kr
+  viewMainData() async {
     emptyList = await helper.getNotePad();
     setState(() {});
   }
 
+
+
   @override
   void initState() {
     super.initState();
-    viewData();
+    viewMainData();
     setState(() {});
   }
  
@@ -116,7 +124,7 @@ class _BeautifulGridViewState extends State<BeautifulGridView> {
 ///* ma a raha ha aur ak (Delay) ka sth a raha ha . Aur ya method Future ma (void)
 ///* kuch bhi return nhi kr raha .
   Future<void> _refresh() {
-    viewData();
+    viewMainData();
     return Future.delayed(const Duration(seconds: 4));
   }
 
@@ -188,7 +196,7 @@ class _BeautifulGridViewState extends State<BeautifulGridView> {
                             bool delete =await helper.deleteNotePad(id: emptyList[index].id);
                             if (delete) {
                               setState(() {
-                                viewData();
+                                viewMainData();
                               });
                             }else{
                                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Do'nt Delete Data .")));

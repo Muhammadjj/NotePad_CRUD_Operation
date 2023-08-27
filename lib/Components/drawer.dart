@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:note_pad2/Components/Constant/colors_file.dart';
-import 'package:note_pad2/Screens/Routes/routes_method.dart';
+import 'package:note_pad2/Routes/routes_method.dart';
 
 import 'Constant/textstyle.dart';
 

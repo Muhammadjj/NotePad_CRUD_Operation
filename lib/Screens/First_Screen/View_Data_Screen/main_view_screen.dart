@@ -8,7 +8,7 @@ import '../../../Components/Constant/colors_file.dart';
 import '../../../Components/Constant/textstyle.dart';
 import '../../../Components/drawer.dart';
 import '../../../Models/note_pad_model_class.dart';
-import '../../Routes/routes_method.dart';
+import '../../../Routes/routes_method.dart';
 
 
 class FetchingScreen extends StatefulWidget {

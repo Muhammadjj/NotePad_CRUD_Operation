@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:note_pad2/Models/note_pad_model_class.dart';
 import 'package:note_pad2/Screens/Drawer_Screens/Recycle_Bin_Screen/recycle_bin_data_widget.dart';
-import 'package:note_pad2/Screens/Routes/routes_method.dart';
+import 'package:note_pad2/Routes/routes_method.dart';
 import '../../../Components/Constant/colors_file.dart';
 import '../../../Components/Constant/textstyle.dart';
 

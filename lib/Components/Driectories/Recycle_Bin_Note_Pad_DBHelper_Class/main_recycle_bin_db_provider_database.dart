@@ -11,6 +11,7 @@ class RecycleBinProvider {
   static const String recycleBinCreateTable =
       """CREATE TABLE $recycleBinTableName($recycleBinColumID INTEGER PRIMARY KEY AUTOINCREMENT,$recycleBinColumTitle TEXT,$recycleBinColumDescription TEXT)""";
 
+
   //Todo: ya hm ny jo History ka table alg sa bnya ha ays  ki get ka method ha
   //Todo: jo ka hm history page pr use kry ga.
   // ** get All data receive this NotePad (getPage) and show this data (HistoryPage)
@@ -20,6 +21,8 @@ class RecycleBinProvider {
     return rowID.map((fetch) => NotePadModelClass.fromMap(fetch)).toList();
   }
 
+
+    
   Future<bool> deleteRecycleBinData({int? id}) async {
     Database db = await NotePadDBHelper.dataBaseFunction;
     int rowID = await db.delete(recycleBinTableName,
