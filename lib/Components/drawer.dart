@@ -1,6 +1,9 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:note_pad2/Components/Constant/colors_file.dart';
 import 'package:note_pad2/Routes/routes_method.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Constant/textstyle.dart';
 
@@ -12,6 +15,18 @@ class BeautifulDrawer extends StatefulWidget {
 }
 
 class _BeautifulDrawerState extends State<BeautifulDrawer> {
+
+  String email = "";
+  String password = "";
+
+
+  ggg()async{
+
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    email = preferences.getString("email")!;
+    password = preferences.getString("password")!;
+  }
+
   @override
   Widget build(BuildContext context) {
     var heightMediaQuery = MediaQuery.sizeOf(context).height;
@@ -53,7 +68,21 @@ class _BeautifulDrawerState extends State<BeautifulDrawer> {
           onTap: () => Navigator.pushNamed(context, RoutesName.aboutScreen),
           text: "About",
           icon: Icons.info_outline_rounded
-         )
+         ),
+
+         listTile(
+          onTap: () async {
+             ggg();
+            SharedPreferences preferences =await SharedPreferences.getInstance();
+            bool load = preferences.getBool("login")?? false;
+            if (load) {
+              preferences.clear();
+              Navigator.pushNamed(context, RoutesName.loginScreen);
+            }
+          },
+          text: "Logout",
+          icon: Icons.login_outlined
+         ),
            
         ],
       ),

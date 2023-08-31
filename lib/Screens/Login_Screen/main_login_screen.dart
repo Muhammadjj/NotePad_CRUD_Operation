@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:note_pad2/Components/Constant/colors_file.dart';
 import 'package:note_pad2/Components/Constant/textstyle.dart';
+import 'package:note_pad2/Routes/routes_method.dart';
 import 'package:note_pad2/Screens/Login_Screen/login_screen_widget.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -83,13 +84,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   CupertinoButton( 
                     onPressed: () async{
-                     key.currentState!.validate();
+                     pageValidationLoaded();
                       SharedPreferences  preferences = await SharedPreferences.getInstance();
                       preferences.setString("email", emailController.text.toString());
                       preferences.setString("password", passwordController.text.toString());
                       preferences.setBool("login", true);
 
-
+                     
                       
                     },
                     color: Colors.white.withOpacity(0.5),
@@ -102,5 +103,11 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ]),
     );
+  }
+
+  void pageValidationLoaded(){
+    if (key.currentState!.validate()) {
+      Navigator.pushNamed(context, RoutesName.firstScreen);
+    }
   }
 }

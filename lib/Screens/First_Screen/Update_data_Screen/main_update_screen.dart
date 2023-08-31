@@ -18,6 +18,7 @@ class _UpdateDataState extends State<UpdateData> {
 
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
+  TextEditingController idController = TextEditingController();
 
 
 ///* using this function all this data receive to (fetchingScreen) and receive 
@@ -25,6 +26,7 @@ class _UpdateDataState extends State<UpdateData> {
   updatingData() async {
     try {
       NotePadModelClass note = NotePadModelClass(
+            id: int.parse(idController.text),
             title: titleController.text,
             description: descriptionController.text);
      await helper.updateNotePad( modelClass:note );
@@ -43,14 +45,17 @@ class _UpdateDataState extends State<UpdateData> {
   @override
   void initState() {
     super.initState();
+    idController =  TextEditingController();
     titleController = TextEditingController();
     descriptionController = TextEditingController();
+    idController.text = widget.modelClass.id.toString();
     titleController.text = widget.modelClass.title.toString();
     descriptionController.text = widget.modelClass.description.toString();
   }
 
   @override
   void dispose() {
+    idController.dispose();
     titleController.dispose();
     descriptionController.dispose();
     super.dispose();
