@@ -15,13 +15,10 @@ class BeautifulDrawer extends StatefulWidget {
 }
 
 class _BeautifulDrawerState extends State<BeautifulDrawer> {
-
   String email = "";
   String password = "";
 
-
-  ggg()async{
-
+  ggg() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     email = preferences.getString("email")!;
     password = preferences.getString("password")!;
@@ -35,75 +32,89 @@ class _BeautifulDrawerState extends State<BeautifulDrawer> {
       elevation: 5,
       shadowColor: const Color.fromARGB(181, 223, 223, 223),
       backgroundColor: allScreenColors,
-      shape:const ContinuousRectangleBorder(borderRadius: BorderRadius.only(
-      bottomRight: Radius.circular(50),
-      topRight: Radius.circular(50))),
+      shape: const ContinuousRectangleBorder(
+          borderRadius: BorderRadius.only(
+              bottomRight: Radius.circular(50), topRight: Radius.circular(50))),
       child: ListView(
-        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+        physics: const BouncingScrollPhysics(
+            parent: AlwaysScrollableScrollPhysics()),
         children: [
-           //  (DrawerHeader)
+          //  (DrawerHeader)
           DrawerHeader(
-            padding:const EdgeInsets.all(0),
-            child: 
-          Column(
-            children: [
-              Expanded(child: Center(child: Text("NotePad",
-              style: textStyle(35, FontWeight.bold, FontStyle.italic, Colors.white,),))),
-              Expanded(
-                flex: 2,
-                child: SizedBox(
-                  height: heightMediaQuery*0.1,
-                  width: widthMediaQuery,
-                  child: const Image(image: AssetImage("assest/images/notepad.png"))),
-              ),
-            ],
-          )),
+              padding: const EdgeInsets.all(0),
+              child: Column(
+                children: [
+                  Expanded(
+                      child: Center(
+                          child: Text(
+                    "NotePad",
+                    style: textStyle(
+                      35,
+                      FontWeight.bold,
+                      FontStyle.italic,
+                      Colors.white,
+                    ),
+                  ))),
+                  Expanded(
+                    flex: 2,
+                    child: SizedBox(
+                        height: heightMediaQuery * 0.1,
+                        width: widthMediaQuery,
+                        child: const Image(
+                            image: AssetImage("assest/images/notepad.png"))),
+                  ),
+                ],
+              )),
           //  List of Drawer Working .
-         listTile(
-          onTap: () => Navigator.pushNamed(context, RoutesName.recycleBinScreen),
-          text: "RecycleBin",
-          icon: Icons.recycling_rounded,
-         ),
-         listTile(
-          onTap: () => Navigator.pushNamed(context, RoutesName.aboutScreen),
-          text: "About",
-          icon: Icons.info_outline_rounded
-         ),
+          listTile(
+            onTap: () =>
+                Navigator.pushNamed(context, RoutesName.recycleBinScreen),
+            text: "RecycleBin",
+            icon: Icons.recycling_rounded,
+          ),
+          listTile(
+              onTap: () => Navigator.pushNamed(context, RoutesName.aboutScreen),
+              text: "About",
+              icon: Icons.info_outline_rounded),
 
-         listTile(
-          onTap: () async {
-             ggg();
-            SharedPreferences preferences =await SharedPreferences.getInstance();
-            bool load = preferences.getBool("login")?? false;
-            if (load) {
-              preferences.clear();
-              Navigator.pushNamed(context, RoutesName.loginScreen);
-            }
-          },
-          text: "Logout",
-          icon: Icons.login_outlined
-         ),
-           
+          listTile(
+              onTap: () async {
+                ggg();
+                SharedPreferences preferences =
+                    await SharedPreferences.getInstance();
+                bool load = preferences.getBool("login") ?? false;
+                if (load) {
+                  preferences.clear();
+                  Navigator.pushNamed(context, RoutesName.loginScreen);
+                }
+              },
+              text: "Logout",
+              icon: Icons.login_outlined),
         ],
       ),
     );
   }
 
-
-
-
-  Widget listTile({String? text,IconData? icon,GestureTapCallback? onTap}){
+  Widget listTile({String? text, IconData? icon, GestureTapCallback? onTap}) {
     return Card(
       color: allScreenColors,
       elevation: 5,
       shadowColor: const Color.fromARGB(255, 206, 206, 206).withOpacity(0.2),
-      margin:const EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       shape: ContinuousRectangleBorder(borderRadius: BorderRadius.circular(5)),
       child: InkWell(
         onTap: onTap,
         child: ListTile(
-                title: Text(text.toString(),style: textStyle(20, FontWeight.w500, FontStyle.normal, Colors.white),),
-                leading: Icon(icon,color: Colors.white,),),
+          title: Text(
+            text.toString(),
+            style:
+                textStyle(20, FontWeight.w500, FontStyle.normal, Colors.white),
+          ),
+          leading: Icon(
+            icon,
+            color: Colors.white,
+          ),
+        ),
       ),
     );
   }

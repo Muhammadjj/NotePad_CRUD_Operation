@@ -23,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    // Todo: implement initState
     super.initState();
     emailController = TextEditingController();
     passwordController = TextEditingController();
@@ -31,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
  @override
   void dispose() {
-    // TODO: implement dispose
+    // Todo: implement dispose
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
@@ -47,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
           height: height * 0.15,
         ),
         Center(
-          child: Container(
+          child: SizedBox(
             height: height * 0.7,
             width: width * 0.9,
             // color: Colors.red,

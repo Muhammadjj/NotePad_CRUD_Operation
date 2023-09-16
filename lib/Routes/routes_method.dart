@@ -22,28 +22,42 @@ class RoutesName {
 class RoutesMethod {
   static Route<dynamic>? onGenerate(RouteSettings settings) {
     if (settings.name == RoutesName.splashScreen) {
-      return MaterialPageRoute(builder: (context) => const SplashScreen(),);
+      return MaterialPageRoute(
+        builder: (context) => const SplashScreen(),
+      );
     } else if (settings.name == RoutesName.firstScreen) {
-      return MaterialPageRoute(builder: (context) => const FetchingScreen(),);
+      return MaterialPageRoute(
+        builder: (context) => const FetchingScreen(),
+      );
     } else if (settings.name == RoutesName.secondScreen) {
-      return MaterialPageRoute(builder: (context) => const InsertScreen(),);
+      return MaterialPageRoute(
+        builder: (context) => const InsertScreen(),
+      );
     } else if (settings.name == RoutesName.thirdScreen) {
-      return MaterialPageRoute(builder: (context) =>UpdateData(modelClass: settings.arguments as NotePadModelClass),);
+      return MaterialPageRoute(
+        builder: (context) =>
+            UpdateData(modelClass: settings.arguments as NotePadModelClass),
+      );
     } else if (settings.name == RoutesName.recycleBinScreen) {
-      return MaterialPageRoute(builder: (context) => const RecycleBinScreen(),);
+      return MaterialPageRoute(
+        builder: (context) => const RecycleBinScreen(),
+      );
     } else if (settings.name == RoutesName.aboutScreen) {
-      return MaterialPageRoute(builder: (context) => const AboutScreen(),);
-    } else if(settings.name == RoutesName.loginScreen){
-      return MaterialPageRoute(builder: (context) =>const LoginScreen(),);
-    }
-    
-    else {
+      return MaterialPageRoute(
+        builder: (context) => const AboutScreen(),
+      );
+    } else if (settings.name == RoutesName.loginScreen) {
+      return MaterialPageRoute(
+        builder: (context) => const LoginScreen(),
+      );
+    } else {
       return MaterialPageRoute(
         builder: (context) {
           return const Scaffold(
             backgroundColor: Colors.red,
             body: Center(
-              child: Text("Do'nt Found This Pages. ",
+              child: Text(
+                "Do'nt Found This Pages. ",
                 style: TextStyle(color: Colors.white),
               ),
             ),
